@@ -1,0 +1,8 @@
+.productContainer {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.productContainer img {
+    width: 300px;
+}

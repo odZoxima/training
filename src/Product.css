@@ -1,0 +1,22 @@
+.productDetailsContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+.productDetailsContainer img {
+  width: 300px;
+  margin: 30px 0;
+}
+
+.addToCartCTA {
+  margin: 20px 0;
+  padding: 0 30px;
+  line-height: 30px;
+  border-radius: 15px;
+  border: none;
+  background: crimson;
+  color: white;
+  font-size: 1.2em;
+}

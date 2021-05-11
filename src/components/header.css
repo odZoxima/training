@@ -1,0 +1,22 @@
+ul {
+  list-style: none;
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  background: #ededd0;
+}
+
+ul > li {
+  float: left;
+  line-height: 40px;
+  color: #59209a;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+ul > li a {
+  color: #907fa4;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+}
