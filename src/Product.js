@@ -11,9 +11,9 @@ const Product = () => {
 
     return(
         <div className="productDetailsContainer">
-            {id=="prod1" && <img src={prod1} />}
-            {id=="prod2" && <img src={prod2} />}
-            {id=="prod3" && <img src={prod3} />}
+            {id==="prod1" && <img src={prod1} alt="product 1" />}
+            {id==="prod2" && <img src={prod2} alt="product 2" />}
+            {id==="prod3" && <img src={prod3} alt="product 3" />}
             <p>Hi this is a test product with Lorem Ipsum text we don't care about. Thankyou for shopping with us.</p>
 
             <Link to="/cart"><button className="addToCartCTA">Add to Cart</button></Link>
