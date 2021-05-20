@@ -1,18 +1,41 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import UpdatedComponent from "./components/withCounter";
-
-import prod1 from "./images/prod1.jpg";
-import prod2 from "./images/prod2.png";
-import prod3 from "./images/prod3.jpg";
+import { useDispatch, useSelector } from "react-redux";
+import { setProduct } from "./redux/actions/productActions";
+import axios from "axios";
 
 const Home = (props) => {
+  const products = useSelector((state) => state.allProducts.products);
+  const dispatch = useDispatch();
+
+  console.log(products);
+
+  const fetchProducts = async () => {
+    const response = await axios
+      .get("https://fakestoreapi.com/products")
+      .catch((err) => console.log(err));
+
+    dispatch(setProduct(response.data))
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
   return (
     <>
       <div className="productContainer">
-        <div>
+        {products.map((item) => (
+          <div key={item.id} className="product_container" style={{padding: 20}}>
+            <h4>{item.title}</h4>
+            <p>{item.category}</p>
+            <p>{item.description}</p>
+          </div>
+        ))}
 
+        {/* <div>
           <Link to="/product/prod1">
             <img src={prod1} alt="Product 1" />
           </Link>
@@ -26,11 +49,9 @@ const Home = (props) => {
             <label>{props.count}</label>
             <button onClick={props.incrementCount}>+</button>
           </div>
-          
         </div>
 
         <div>
-
           <Link to="/product/prod2">
             <img src={prod2} alt="Product 2" />
           </Link>
@@ -44,11 +65,9 @@ const Home = (props) => {
             <label>{props.count}</label>
             <button onClick={props.incrementCount}>+</button>
           </div>
-          
         </div>
 
         <div>
-
           <Link to="/product/prod3">
             <img src={prod3} alt="Product 3" />
           </Link>
@@ -62,8 +81,7 @@ const Home = (props) => {
             <label>{props.count}</label>
             <button onClick={props.incrementCount}>+</button>
           </div>
-          
-        </div>
+        </div> */}
       </div>
     </>
   );
