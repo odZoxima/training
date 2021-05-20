@@ -31,6 +31,7 @@ const Home = (props) => {
           <div key={item.id} className="product_container" style={{padding: 20}}>
             <h4>{item.title}</h4>
             <p>{item.category}</p>
+            <p>{item.description}</p>
           </div>
         ))}
 
