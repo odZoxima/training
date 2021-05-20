@@ -1,36 +1,56 @@
 import React, { useState } from "react";
+import { createStore } from "redux";
 
 const UpdatedComponent = (OriginalComponent) => {
-    
   const NewComponent = () => {
-    const [count, setCount] = useState(0);
+    const ADD_PRODUCT = "ADD_PRODUCT";
+    const SUBTRACT_PRODUCT = "SUBTRACT_PRODUCT";
 
-    const incrementCount = () => {
-      setCount(count + 1);
+    const addFunction = () => {
+      return {
+        type: ADD_PRODUCT,
+        info: "Incrementing by 1",
+      };
     };
 
-    const decrementCount = () => {
-      count > 0 && setCount(count - 1);
+    const subtractFunction = () => {
+      return {
+        type: SUBTRACT_PRODUCT,
+        info: "Decrementing by 1",
+      };
     };
+
+    const initialState = {
+      count: 0,
+      type: "Something",
+      status: false,
+    };
+
+    const reducer = (state = initialState, action) => {
+      switch (action.type) {
+        case ADD_PRODUCT:
+          return { ...state, count: state.count + 1 };
+
+        case SUBTRACT_PRODUCT:
+          return state.count > 0 ? { ...state, count: state.count - 1 } : state;
+
+        default:
+          return state;
+      }
+    };
+
+    const store = createStore(reducer);
+
+    store.subscribe(() => console.log(store.getState().count))
 
     return (
       <OriginalComponent
-        count={count}
-        incrementCount={incrementCount}
-        decrementCount={decrementCount}
+        count={store.getState().count}
+        incrementCount={() => store.dispatch(addFunction())}
+        decrementCount={() => store.dispatch(subtractFunction())}
       />
     );
   };
-
-  // Build it in Class component
-
-
-//   class NewComponent extends React.Component {
-
-//       render(){
-//           return <OriginalComponent />
-//       }
-//   }
 
   return NewComponent;
 };

@@ -8,7 +8,6 @@ import Product from "./Product";
 import Cart from "./Cart";
 
 const App = () => {
-
   return (
     <Router>
       <div>

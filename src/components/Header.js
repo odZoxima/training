@@ -2,13 +2,13 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./header.css"
 
-const Header = (props) => {
+const Header = () => {
 
   return (
     <ul>
-      <li onClick={() => props.setText("Home")}><NavLink to="/">Home</NavLink></li>
-      <li onClick={() => props.setText("Explore")}><NavLink to="/explore">Explore</NavLink></li>
-      <li onClick={() => props.setText("Cart")}><NavLink to="/cart">Cart</NavLink></li>
+      <li><NavLink to="/">Home</NavLink></li>
+      <li><NavLink to="/explore">Explore</NavLink></li>
+      <li><NavLink to="/cart">Cart</NavLink></li>
     </ul>
   );
 };
